@@ -1,0 +1,111 @@
+[debug] [2024-08-03T18:00:19.305Z] ----------------------------------------------------------------------
+[debug] [2024-08-03T18:00:19.309Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\user\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
+[debug] [2024-08-03T18:00:19.309Z] CLI Version:   13.14.2
+[debug] [2024-08-03T18:00:19.309Z] Platform:      win32
+[debug] [2024-08-03T18:00:19.310Z] Node Version:  v20.10.0
+[debug] [2024-08-03T18:00:19.310Z] Time:          Sat Aug 03 2024 21:00:19 GMT+0300 (Moscow Standard Time)
+[debug] [2024-08-03T18:00:19.310Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-08-03T18:00:19.423Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-08-03T18:00:19.423Z] > authorizing via signed-in user (abiolayoung229@gmail.com)
+[debug] [2024-08-03T18:00:19.672Z] java version "22.0.2" 2024-07-16
+
+[debug] [2024-08-03T18:00:19.673Z] Java(TM) SE Runtime Environment (build 22.0.2+9-70)
+Java HotSpot(TM) 64-Bit Server VM (build 22.0.2+9-70, mixed mode, sharing)
+
+[debug] [2024-08-03T18:00:19.694Z] Parsed Java major version: 22
+[info] i  emulators: Starting emulators: auth, functions, firestore {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth, functions, firestore"}}
+[debug] [2024-08-03T18:00:19.723Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-08-03T18:00:19.724Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-08-03T18:00:19.724Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-08-03T18:00:19.724Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-08-03T18:00:19.724Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2024-08-03T18:00:19.731Z] [hub] writing locator at C:\Users\user\AppData\Local\Temp\hub-linkzip-bddb1.json
+[debug] [2024-08-03T18:00:19.749Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-08-03T18:00:19.749Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-08-03T18:00:19.749Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] !  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: database, hosting, pubsub, storage, dataconnect {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mdatabase, hosting, pubsub, storage, dataconnect\u001b[22m"}}
+[debug] [2024-08-03T18:00:19.753Z] defaultcredentials: writing to file C:\Users\user\AppData\Roaming\firebase\abiolayoung229_gmail_com_application_default_credentials.json
+[debug] [2024-08-03T18:00:19.756Z] Setting GAC to C:\Users\user\AppData\Roaming\firebase\abiolayoung229_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\user\\AppData\\Roaming\\firebase\\abiolayoung229_gmail_com_application_default_credentials.json"}}
+[debug] [2024-08-03T18:00:19.759Z] > refreshing access token with scopes: []
+[debug] [2024-08-03T18:00:19.761Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2024-08-03T18:00:19.761Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-08-03T18:00:20.311Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2024-08-03T18:00:20.312Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-08-03T18:00:20.325Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/linkzip-bddb1/adminSdkConfig [none]
+[debug] [2024-08-03T18:00:20.872Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/linkzip-bddb1/adminSdkConfig 200
+[debug] [2024-08-03T18:00:20.872Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/linkzip-bddb1/adminSdkConfig {"projectId":"linkzip-bddb1","storageBucket":"linkzip-bddb1.appspot.com"}
+[warn] !  firestore: Cloud Firestore Emulator does not support multiple databases yet. {"metadata":{"emulator":{"name":"firestore"},"message":"Cloud Firestore Emulator does not support multiple databases yet."}}
+[warn] !  firestore: Did not find a Cloud Firestore rules file specified in a firebase.json config file. {"metadata":{"emulator":{"name":"firestore"},"message":"Did not find a Cloud Firestore rules file specified in a firebase.json config file."}}
+[warn] !  firestore: The emulator will default to allowing all reads and writes. Learn more about this option: https://firebase.google.com/docs/emulator-suite/install_and_configure#security_rules_configuration. {"metadata":{"emulator":{"name":"firestore"},"message":"The emulator will default to allowing all reads and writes. Learn more about this option: https://firebase.google.com/docs/emulator-suite/install_and_configure#security_rules_configuration."}}
+[debug] [2024-08-03T18:00:20.889Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2024-08-03T18:00:20.889Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
+[debug] [2024-08-03T18:00:20.889Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","C:\\Users\\user\\.cache\\firebase\\emulators\\cloud-firestore-emulator-v1.19.7.jar","--host","127.0.0.1","--port",8080,"--websocket_port",9150,"--project_id","linkzip-bddb1","--single_project_mode",true,"--functions_emulator","127.0.0.1:5001"],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false,"shell":false} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\user\\\\.cache\\\\firebase\\\\emulators\\\\cloud-firestore-emulator-v1.19.7.jar\",\"--host\",\"127.0.0.1\",\"--port\",8080,\"--websocket_port\",9150,\"--project_id\",\"linkzip-bddb1\",\"--single_project_mode\",true,\"--functions_emulator\",\"127.0.0.1:5001\"],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false}"}}
+[info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
+[info] +  firestore: Firestore Emulator UI websocket is running on 9150. {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator UI websocket is running on 9150."}}
+[debug] [2024-08-03T18:00:34.481Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2024-08-03T18:00:34.482Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2024-08-03T18:00:34.482Z] Starting Emulator UI with command {"binary":"node","args":["C:\\Users\\user\\.cache\\firebase\\emulators\\ui-v1.13.0\\server\\server.mjs"],"optionalArgs":[],"joinArgs":false,"shell":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"C:\\\\Users\\\\user\\\\.cache\\\\firebase\\\\emulators\\\\ui-v1.13.0\\\\server\\\\server.mjs\"],\"optionalArgs\":[],\"joinArgs\":false,\"shell\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2024-08-03T18:00:34.703Z] Web / API server started at 127.0.0.1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\n"}}
+[debug] [2024-08-03T18:00:34.703Z] Web / API server started at ::1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4000\n"}}
+[info] i  functions: Watching "C:\Users\user\Documents\capstone\shortly\functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\Users\\user\\Documents\\capstone\\shortly\\functions\" for Cloud Functions..."}}
+[debug] [2024-08-03T18:00:34.716Z] Validating nodejs source
+[debug] [2024-08-03T18:00:37.898Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "firebase-admin": "^12.1.0",
+    "firebase-functions": "^5.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.0",
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[error] !!  functions: Failed to load function definition from source: FirebaseError: There was an error reading functions\package.json:
+
+ functions\lib\index.js does not exist, can't deploy Cloud Functions {"metadata":{"emulator":{"name":"functions"},"message":"Failed to load function definition from source: FirebaseError: There was an error reading functions\\package.json:\n\n functions\\lib\\index.js does not exist, can't deploy Cloud Functions"}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────────┬────────────────┬─────────────────────────────────┐
+│ Emulator       │ Host:Port      │ View in Emulator UI             │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Authentication │ 127.0.0.1:9099 │ http://127.0.0.1:4000/auth      │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Functions      │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Firestore      │ 127.0.0.1:8080 │ http://127.0.0.1:4000/firestore │
+└────────────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500, 9150
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2024-08-03T18:04:38.344Z] >>> [apiv2][query] POST http://127.0.0.1:5001/functions/projects/linkzip-bddb1/trigger_multicast [none]
+[debug] [2024-08-03T18:04:38.344Z] >>> [apiv2][body] POST http://127.0.0.1:5001/functions/projects/linkzip-bddb1/trigger_multicast {"eventId":"60a25f37-d073-46f5-8215-af931104c34d","eventType":"providers/firebase.auth/eventTypes/user.create","resource":{"name":"projects/linkzip-bddb1","service":"firebaseauth.googleapis.com"},"params":{},"timestamp":"2024-08-03T18:04:38.343Z","data":{"uid":"nHPbMEJsChfTxkJzbuO0cMMRMWJX","email":"local@gmail.com","emailVerified":false,"metadata":{"creationTime":"2024-08-03T18:04:38.340Z","lastSignInTime":"2024-08-03T18:04:38.340Z"},"customClaims":{},"providerData":[{"providerId":"password","email":"local@gmail.com","federatedId":"local@gmail.com","rawId":"local@gmail.com"}]}}
+[debug] [2024-08-03T18:04:38.359Z] <<< [apiv2][status] POST http://127.0.0.1:5001/functions/projects/linkzip-bddb1/trigger_multicast 200
+[debug] [2024-08-03T18:04:38.359Z] <<< [apiv2][body] POST http://127.0.0.1:5001/functions/projects/linkzip-bddb1/trigger_multicast {"status":"multicast_acknowledged"}
+[debug] [2024-08-03T18:21:03.445Z] >>> [apiv2][query] POST http://127.0.0.1:5001/functions/projects/linkzip-bddb1/trigger_multicast [none]
+[debug] [2024-08-03T18:21:03.471Z] >>> [apiv2][body] POST http://127.0.0.1:5001/functions/projects/linkzip-bddb1/trigger_multicast {"eventId":"410ca5e0-226d-4d14-88b1-bbb44b6b6fbb","eventType":"providers/firebase.auth/eventTypes/user.create","resource":{"name":"projects/linkzip-bddb1","service":"firebaseauth.googleapis.com"},"params":{},"timestamp":"2024-08-03T18:21:03.413Z","data":{"uid":"MxbQtPeGLGKFGrjzlAOfdgM8UzOW","email":"abiolayoung229@gmail.com","emailVerified":false,"metadata":{"creationTime":"2024-08-03T18:21:03.397Z","lastSignInTime":"2024-08-03T18:21:03.397Z"},"customClaims":{},"providerData":[{"providerId":"password","email":"abiolayoung229@gmail.com","federatedId":"abiolayoung229@gmail.com","rawId":"abiolayoung229@gmail.com"}]}}
+[debug] [2024-08-03T18:21:03.536Z] <<< [apiv2][status] POST http://127.0.0.1:5001/functions/projects/linkzip-bddb1/trigger_multicast 200
+[debug] [2024-08-03T18:21:03.536Z] <<< [apiv2][body] POST http://127.0.0.1:5001/functions/projects/linkzip-bddb1/trigger_multicast {"status":"multicast_acknowledged"}
