@@ -11,6 +11,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "copy-to-clipboard": "^3.3.3",
     "date-fns": "^3.6.0",
     "firebase": "^10.12.4",
     "nanoid": "^5.0.7",
@@ -24,7 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "firebase-emulators": "firebase emulators:start --export-on-exit --import=./firebase-emulators"
   },
   "eslintConfig": {
     "extends": [

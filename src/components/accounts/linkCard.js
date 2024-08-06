@@ -1,8 +1,21 @@
 import { Box, Typography, Button } from "@mui/material";
 import { BarChart as ChartIcon } from "@mui/icons-material";
 import format from "date-fns/format";
+import {memo} from 'react'
 
-const LinkCard = ({ id, createdAt, name, longURL, shortCode, totalClicks }) => {
+const LinkCard = ({
+  id,
+  createdAt,
+  name,
+  longURL,
+  shortCode,
+  totalClicks,
+  deleteLink,
+  copyLink,
+}) => {
+  console.log("link Card Rendered");
+
+  const shortUrl = `${window.location.host}/${shortCode}`;
   return (
     <Box display="flex" justifyContent="space-between" alignItems="center">
       <Box>
@@ -16,15 +29,19 @@ const LinkCard = ({ id, createdAt, name, longURL, shortCode, totalClicks }) => {
         </Box>
 
         <Box display="flex" alignItems="center">
-          <Typography color="primary">
-            {window.location.host}/{shortCode}
-          </Typography>
+          <Typography color="primary">{shortUrl}</Typography>
           <Box mx={2}>
-            <Button color="primary" size="small" variant="outlined">
+            <Button
+              onClick={() => copyLink(shortUrl)}
+              color="primary"
+              size="small"
+              variant="outlined"
+            >
               Copy
             </Button>
           </Box>
           <Button
+            onClick={() => deleteLink(id)}
             color="secondary"
             size="small"
             variant="contained"
@@ -48,4 +65,4 @@ const LinkCard = ({ id, createdAt, name, longURL, shortCode, totalClicks }) => {
   );
 };
 
-export default LinkCard;
+export default memo(LinkCard);

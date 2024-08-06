@@ -1,40 +1,24 @@
-import { Grid, Box, Typography, Button, Divider } from "@mui/material";
-import { useState, Fragment, useEffect } from "react";
+import { Grid, Box, Typography, Button, Divider, Snackbar } from "@mui/material";
+import { useState, Fragment, useEffect, useCallback } from "react";
 import Navbar from "./navbar";
 import LinkCard from "./linkCard";
 import ShortenURLModules from "./ShortenURLModules";
 import { nanoid } from "nanoid";
 import { app, firestore, auth } from "../../firebase";
+import copy from "copy-to-clipboard";
 import {
   getFirestore,
   collection,
   addDoc,
   serverTimestamp,
   getDocs,
+  doc, deleteDoc,
 } from "firebase/firestore";
-
-const dummyData = [
-  {
-    id: "31r08ms0fam",
-    createdAt: new Date(),
-    name: "my website",
-    longURL: "https://google.com",
-    shortCode: "abiola",
-    totalClicks: 313,
-  },
-  {
-    id: "31r08ms0famab2",
-    createdAt: new Date(),
-    name: "Mindlift Wellness",
-    longURL: "https://mindliftwellness.com",
-    shortCode: "abiola",
-    totalClicks: 31,
-  },
-];
 
 const Account = () => {
   const [links, setLinks] = useState([]);
   const [openModule, setOpenModule] = useState(false);
+  const [newLinkToaster, setNewLinkToaster] = useState(false)
 
   const handleCreateShortenLink = async (name, longUrl) => {
     const link = {
@@ -78,8 +62,27 @@ const Account = () => {
     fetchLinks();
   }, []);
 
+
+  // delect a document whenever the delete button is triggered
+   
+  const handleDeleteLink = useCallback(async (linkDocID) => {
+    const db = getFirestore();
+    const linkRef = doc(db, "users", auth.currentUser.uid, "links", linkDocID);
+    await deleteDoc(linkRef);
+    setLinks((oldLinks) => oldLinks.filter((link) => link.id !== linkDocID))
+  }, []);
+
+  // const dummyFunction = useCallback(() => {
+  //   console.log('dummy function')}, [])
+  
+  const handleCopyLink = useCallback(shortUrl => {
+    copy(shortUrl);
+    setNewLinkToaster(true)
+  }, [])
+
   return (
     <>
+    <Snackbar open={newLinkToaster} onClose={() => setNewLinkToaster(false)} autoHideDuration={2000} message="link copied to the clipboard"/>
       {openModule && (
         <ShortenURLModules
           createShortenLink={handleCreateShortenLink}
@@ -110,7 +113,12 @@ const Account = () => {
               )
               .map((link, idx) => (
                 <Fragment key={link.id}>
-                  <LinkCard {...link} />
+                  <LinkCard
+                    {...link}
+                    // dummyFunction={dummyFunction}
+                    deleteLink={handleDeleteLink}
+                    copyLink={handleCopyLink}
+                  />
                   {idx !== links.length && (
                     <Box my={4}>
                       <Divider />
