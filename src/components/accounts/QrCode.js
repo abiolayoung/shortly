@@ -34,6 +34,41 @@ useEffect(() => {
 
 console.log(inputValue)
 
+const apiKey = '068d7e00-58d1-11ef-8d5d-cff9db25dd8a';
+const apiUrl = 'https://qrcode-tiger.com/api/qr/static';
+
+// const data = {
+//     "size": 500,
+//     "colorDark": "rgb(5,64,128)",
+//     "logo": "scan_me.png",
+//     "eye_outer": "eyeOuter2",
+//     "eye_inner": "eyeInner1",
+//     "qrData": "pattern0",
+//     "backgroundColor": "rgb(255,255,255)",
+//     "transparentBkg": false,
+//     "qrCategory": "url",
+//     "text": "https://qrcode-tiger.com"
+// }
+
+// const res = async () => {
+//     try {
+//        const response = await fetch  (apiUrl, {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type' : 'application/json',
+//                 'Authorization' : `Bearer ${apiKey}`
+//             },
+//             body: JSON.stringify(data)
+//         })
+//         const result = await response.json()
+//         console.log(result)
+//     }catch (error){
+//         console.log(error)
+//     }
+// } 
+// res();
+
+
   return (
     <InputContext.Provider value={value}>
         <Box bgcolor="#56B7BA" height="100vh">
