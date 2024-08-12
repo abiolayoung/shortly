@@ -1,0 +1,6 @@
+[✔] Authentication
+[✔] Creating short links
+[✔] Generated link visit time stamp (createdAt)
+[✔] Added cloud functions for synchronization
+[✔] Redirect
+[✔] Incrementing total clicks

@@ -19,6 +19,9 @@ export default createTheme({
     },
     h4: {
         fontWeight: '600'
-    }
+    },
+    h3: {
+      fontWeight: '600'
+  }
   },
 });

@@ -7,7 +7,7 @@ const LinkCard = ({
   id,
   createdAt,
   name,
-  longURL,
+  longUrl,
   shortCode,
   totalClicks,
   deleteLink,
@@ -24,8 +24,8 @@ const LinkCard = ({
         </Typography>
 
         <Box my={2}>
-          <Typography variant="h5">{name}</Typography>
-          <Typography>{longURL}</Typography>
+          <Typography variant="h5" style={{marginBottom: '5px'}}>{name}</Typography>
+          <Typography>{longUrl}</Typography>
         </Box>
 
         <Box display="flex" alignItems="center">

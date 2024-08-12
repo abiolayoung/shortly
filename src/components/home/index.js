@@ -1,54 +1,77 @@
-import React, { useState } from 'react';
-import { Typography, TextField, Button } from '@mui/material';
-import { auth } from '../../firebase';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  Typography,
+  Button,
+  Box,
+  Grid,
+  Hidden,
+} from "@mui/material";
+import AuthModule from "./AuthModule";
+import { useState } from 'react'
+
 
 const Home = () => {
-  const [form, setForm] = useState({ email: '', password: '' });
-  const [error, setError] = useState(null);
-
-  const handleChange = (event) => {
-    setForm((oldForm) => ({ ...oldForm, [event.target.name]: event.target.value }));
-  };
-
-  const handleSignup = async () => {
-    try {
-      if (!form.email || !form.password) {
-        setError('Please fill in both fields');
-        return;
-      }
-      const userCredential = await createUserWithEmailAndPassword(auth, form.email, form.password);
-      const user = userCredential.user;
-      console.log(user);
-    } catch (error) {
-      setError(error.message);
-    }
-  };
-
-  const handleSignin = async () => {
-    try {
-      if (!form.email || !form.password) {
-        setError('Please fill in both fields');
-        return;
-      }
-      const userCredential = await signInWithEmailAndPassword(auth, form.email, form.password);
-      const user = userCredential.user;
-      console.log(user);
-    } catch (error) {
-      setError(error.message);
-    }
-  };
+  const [openAuthModule, setOpenAuthModule] = useState(false)
 
   return (
-    <>
-      <Typography>Home</Typography>
-      {error && <div style={{ color: 'red' }}>{error}</div>}
-      <TextField value={form.email} name="email" onChange={handleChange} label="email" />
-      <TextField type="password" value={form.password} name="password" onChange={handleChange} label="password" />
-      <Button onClick={handleSignup}>Sign up</Button>
-      <Button onClick={handleSignin}>Sign In</Button>
-    </>
+    <Box
+      display="flex"
+      flexDirection="column"
+      height="100vh"
+      bgcolor="#56B7BA"
+      color="#fff"
+      p={2}
+      boxSizing="border-box"
+    >
+      {openAuthModule && <AuthModule onClose={() => setOpenAuthModule(false)} />}
+      <Box display="flex" alignItems="center" justifyContent="space-between">
+        <Typography variant="h4">LinkZip</Typography>
+        <Button variant="text" color="inherit" onClick={() => setOpenAuthModule(true)}>
+          Login/Signup
+        </Button>
+      </Box>
+
+      <Box flexGrow={1} display="flex" alignItems="center">
+        <Grid container alignItems="center">
+          <Grid item sm={6}>
+            <Box>
+              <Typography variant="h3">Syn, share, and simplify</Typography>
+              <Box my={3}>
+                <Typography>
+                  Simplify your online presence with LinkZip. Organize, share,
+                  and QR-sync your links in one place.
+                </Typography>
+              </Box>
+              <Button
+                disableElevation
+                variant="contained"
+                color="inherit"
+                size="large"
+                style={{ color: "#56B7BA" }}
+                onClick={() => setOpenAuthModule(true)}
+              >
+                Get Started
+              </Button>
+            </Box>
+          </Grid>
+
+          <Hidden only="xs">
+            <Grid item sm={6}>
+              <img
+                style={{
+                  width: "100%",
+                  borderRadius: "7px",
+                  boxShadow: "0px 10px 25px rgba(0, 0, 0, 0.1)",
+                }}
+                src="/assets/linkzip.png"
+                alt="mockup"
+              />
+            </Grid>
+          </Hidden>
+        </Grid>
+      </Box>
+    </Box>
   );
 };
+
 
 export default Home;

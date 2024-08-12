@@ -1,4 +1,11 @@
-import { Grid, Box, Typography, Button, Divider, Snackbar } from "@mui/material";
+import {
+  Grid,
+  Box,
+  Typography,
+  Button,
+  Divider,
+  Snackbar,
+} from "@mui/material";
 import { useState, Fragment, useEffect, useCallback } from "react";
 import Navbar from "./navbar";
 import LinkCard from "./linkCard";
@@ -12,18 +19,22 @@ import {
   addDoc,
   serverTimestamp,
   getDocs,
-  doc, deleteDoc,
+  doc,
+  deleteDoc,
 } from "firebase/firestore";
 
 const Account = () => {
   const [links, setLinks] = useState([]);
   const [openModule, setOpenModule] = useState(false);
-  const [newLinkToaster, setNewLinkToaster] = useState(false)
+  const [newLinkToaster, setNewLinkToaster] = useState(false);
 
   const handleCreateShortenLink = async (name, longUrl) => {
     const link = {
       name,
-      longUrl,
+      longUrl:
+        longUrl.includes("http://") || longUrl.includes("https://")
+          ? longUrl
+          : `http://${longUrl}`,
       createdAt: serverTimestamp(),
       shortCode: nanoid(6),
       totalClicks: 0,
@@ -62,27 +73,31 @@ const Account = () => {
     fetchLinks();
   }, []);
 
-
   // delect a document whenever the delete button is triggered
-   
+
   const handleDeleteLink = useCallback(async (linkDocID) => {
     const db = getFirestore();
     const linkRef = doc(db, "users", auth.currentUser.uid, "links", linkDocID);
     await deleteDoc(linkRef);
-    setLinks((oldLinks) => oldLinks.filter((link) => link.id !== linkDocID))
+    setLinks((oldLinks) => oldLinks.filter((link) => link.id !== linkDocID));
   }, []);
 
   // const dummyFunction = useCallback(() => {
   //   console.log('dummy function')}, [])
-  
-  const handleCopyLink = useCallback(shortUrl => {
+
+  const handleCopyLink = useCallback((shortUrl) => {
     copy(shortUrl);
-    setNewLinkToaster(true)
-  }, [])
+    setNewLinkToaster(true);
+  }, []);
 
   return (
     <>
-    <Snackbar open={newLinkToaster} onClose={() => setNewLinkToaster(false)} autoHideDuration={2000} message="link copied to the clipboard"/>
+      <Snackbar
+        open={newLinkToaster}
+        onClose={() => setNewLinkToaster(false)}
+        autoHideDuration={2000}
+        message="link copied to the clipboard"
+      />
       {openModule && (
         <ShortenURLModules
           createShortenLink={handleCreateShortenLink}

@@ -19,26 +19,27 @@
 // });
 
 const functions = require("firebase-functions");
-const admin = require("firebase-admin")
+const admin = require("firebase-admin");
 
-admin.initializeApp()
+admin.initializeApp();
 
 exports.linkCreated = functions.firestore
   .document("users/{userUid}/links/{linkID}")
   .onCreate((snapshot, context) => {
     const { userUid, linkID } = context.params
     const { longUrl, shortCode } = snapshot.data()
-    
+
    return admin.firestore().doc(`links/${shortCode}`).set({
         userUid,
-        linkID, 
+        linkID,
         longUrl,
     });
   });
 
-  exports.linkDeleted = functions.firestore
+
+exports.linkDeleted = functions.firestore
   .document("users/{userUid}/links/{linkID}")
   .onDelete((snapshot, context) => {
-    const { shortCode } = snapshot.data()
+    const { shortCode } = snapshot.data();
     return admin.firestore().doc(`links/${shortCode}`).delete();
-  })
+  });

@@ -7,6 +7,7 @@ import {
 import { useState, useEffect } from "react";
 import Home from "./components/home";
 import Account from "./components/accounts";
+import QrCode from "./components/accounts/QrCode";
 import { ThemeProvider, CircularProgress, Box } from "@mui/material";
 import { auth } from "./firebase";
 import theme from "./theme";
@@ -39,6 +40,7 @@ const App = () => {
       <Routes>
         <Route exact path="/" element={user ? <Account /> : <Home />} />
         <Route path="/account" element={user ? <Account /> : <Home />} />
+        <Route path="/generate-qr" element={user ? <QrCode /> : <Home />} />
         <Route path="/:shortCode" element={<LinkRedirect />} />
       </Routes>
       {/* </Router> */}
