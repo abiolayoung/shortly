@@ -9,6 +9,7 @@ import {
   TextField,
   IconButton,
   Typography,
+  CircularProgress
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { auth } from "../../firebase";
@@ -21,6 +22,7 @@ const AuthModule = ({ onClose }) => {
   const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState('');
   const [isSignIn, setIsSignIn] = useState(true);
+  const [loading, setLoading] = useState(false)
 
   const handleChange = (event) => {
     setForm((oldForm) => ({
@@ -30,6 +32,7 @@ const AuthModule = ({ onClose }) => {
   };
 
   const handleAuth = async () => {
+    setLoading(true);
     try {
         if(isSignIn) {
             const userCredential = await signInWithEmailAndPassword(
@@ -50,6 +53,7 @@ const AuthModule = ({ onClose }) => {
     } catch (err) {
         console.log(err)
        setError(err.message)
+       setLoading(false)
     }
   };
 
@@ -101,8 +105,9 @@ const AuthModule = ({ onClose }) => {
             variant="contained"
             color="primary"
             onClick={handleAuth}
+            disabled={loading}
           >
-            {isSignIn ? "Sign in" : "sign up"}
+            {loading ? <CircularProgress size={22}/> :  isSignIn ? "Sign in" : "sign up"}
           </Button>
         </Box>
       </DialogActions>
@@ -111,43 +116,3 @@ const AuthModule = ({ onClose }) => {
 };
 
 export default AuthModule;
-
-
-
-
-
-//   const handleSignup = async () => {
-//     try {
-//       if (!form.email || !form.password) {
-//         setError("Please fill in both fields");
-//         return;
-//       }
-//       const userCredential = await createUserWithEmailAndPassword(
-//         auth,
-//         form.email,
-//         form.password
-//       );
-//       const user = userCredential.user;
-//       console.log(user);
-//     } catch (error) {
-//       setError(error.message);
-//     }
-//   };
-
-//   const handleSignin = async () => {
-//     try {
-//       if (!form.email || !form.password) {
-//         setError("Please fill in both fields");
-//         return;
-//       }
-//       const userCredential = await signInWithEmailAndPassword(
-//         auth,
-//         form.email,
-//         form.password
-//       );
-//       const user = userCredential.user;
-//       console.log(user);
-//     } catch (error) {
-//       setError(error.message);
-//     }
-//   };

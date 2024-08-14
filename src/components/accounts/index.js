@@ -5,6 +5,7 @@ import {
   Button,
   Divider,
   Snackbar,
+  CircularProgress,
 } from "@mui/material";
 import { useState, Fragment, useEffect, useCallback } from "react";
 import Navbar from "./navbar";
@@ -27,6 +28,7 @@ const Account = () => {
   const [links, setLinks] = useState([]);
   const [openModule, setOpenModule] = useState(false);
   const [newLinkToaster, setNewLinkToaster] = useState(false);
+  const [fetchingLinks, setFetchingLinks] = useState(true);
 
   const handleCreateShortenLink = async (name, longUrl) => {
     const link = {
@@ -68,6 +70,7 @@ const Account = () => {
       );
 
       setLinks(tempLinks);
+      setTimeout(() => setFetchingLinks(false), 1000);
     };
 
     fetchLinks();
@@ -76,11 +79,13 @@ const Account = () => {
   // delect a document whenever the delete button is triggered
 
   const handleDeleteLink = useCallback(async (linkDocID) => {
-    const db = getFirestore();
-    const linkRef = doc(db, "users", auth.currentUser.uid, "links", linkDocID);
-    await deleteDoc(linkRef);
-    setLinks((oldLinks) => oldLinks.filter((link) => link.id !== linkDocID));
-  }, []);
+    if(window.confirm('do you want to delete the link?')){
+      const db = getFirestore();
+      const linkRef = doc(db, "users", auth.currentUser.uid, "links", linkDocID);
+      await deleteDoc(linkRef);
+      setLinks((oldLinks) => oldLinks.filter((link) => link.id !== linkDocID));
+    }
+    }, []);
 
   // const dummyFunction = useCallback(() => {
   //   console.log('dummy function')}, [])
@@ -122,25 +127,37 @@ const Account = () => {
               </Button>
             </Box>
 
-            {links
-              .sort(
-                (prevLink, nextLink) => nextLink.createdAt - prevLink.createdAt
-              )
-              .map((link, idx) => (
-                <Fragment key={link.id}>
-                  <LinkCard
-                    {...link}
-                    // dummyFunction={dummyFunction}
-                    deleteLink={handleDeleteLink}
-                    copyLink={handleCopyLink}
-                  />
-                  {idx !== links.length && (
-                    <Box my={4}>
-                      <Divider />
-                    </Box>
-                  )}
-                </Fragment>
-              ))}
+            {fetchingLinks ? (
+              <Box textAlign="center">
+                <CircularProgress />
+              </Box>
+            ) : !links.length ? (
+              <Box textAlign="center">
+                <img style={{height: "auto", width: "225px", marginBottom: "24px", }} src="/assets/nodata.png" alt="no links" />
+                <Typography>You have not created any link yet</Typography>
+              </Box>
+            ) : (
+              links
+                .sort(
+                  (prevLink, nextLink) =>
+                    nextLink.createdAt - prevLink.createdAt
+                )
+                .map((link, idx) => (
+                  <Fragment key={link.id}>
+                    <LinkCard
+                      {...link}
+                      // dummyFunction={dummyFunction}
+                      deleteLink={handleDeleteLink}
+                      copyLink={handleCopyLink}
+                    />
+                    {idx !== links.length && (
+                      <Box my={4}>
+                        <Divider />
+                      </Box>
+                    )}
+                  </Fragment>
+                ))
+            )}
           </Grid>
         </Grid>
       </Box>
