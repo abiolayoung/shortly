@@ -76,7 +76,7 @@ const apiUrl = 'https://qrcode-tiger.com/api/qr/static';
           <Box
             bgcolor="#fff"
             style={{
-              width: "60%",
+              width: "80%",
               margin: "10% auto",
               borderRadius: "10px",
               boxShadow: "0px 10px 25px rgba(0, 0, 0, 0.1)",

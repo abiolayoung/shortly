@@ -1,4 +1,4 @@
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Button, Hidden } from "@mui/material";
 import { BarChart as ChartIcon } from "@mui/icons-material";
 import format from "date-fns/format";
 import {memo} from 'react'
@@ -18,14 +18,14 @@ const LinkCard = ({
   const shortUrl = `${window.location.host}/${shortCode}`;
   return (
     <Box display="flex" justifyContent="space-between" alignItems="center">
-      <Box>
+      <Box width="50%">
         <Typography color="textSecondary" variant="overline">
           Created at {format(createdAt, "d MMM, HH:mm")}
         </Typography>
 
         <Box my={2}>
           <Typography variant="h5" style={{marginBottom: '5px'}}>{name}</Typography>
-          <Typography>{longUrl}</Typography>
+          <Typography style={{overflow: 'hidden', textOverflow: "ellipsis"}}>{longUrl}</Typography>
         </Box>
 
         <Box display="flex" alignItems="center">
@@ -52,16 +52,16 @@ const LinkCard = ({
         </Box>
       </Box>
 
-      <Box>
         <Box>
           <Box display="flex" justifyContent="center">
             <Typography>{totalClicks}</Typography>
             <ChartIcon />
           </Box>
-          <Typography>Total Clicks</Typography>
+          <Hidden only="xs">
+            <Typography variant="overline">Total Clicks</Typography>
+          </Hidden>
         </Box>
       </Box>
-    </Box>
   );
 };
 

@@ -9,15 +9,20 @@ import {
   Button,
   TextField,
   IconButton,
+  CircularProgress
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
-
 const ShortenURLModules = ({ handleClose, createShortenLink }) => {
+  const [errors, setErrors] = useState({
+    name: "",
+    longUrl: "",
+  });
   const [form, setForm] = useState({
     name: "",
     longUrl: "",
   });
+  const [loading, setLoading] = useState(false)
 
   const handleChange = (event) =>
     setForm((oldForm) => ({
@@ -25,10 +30,32 @@ const ShortenURLModules = ({ handleClose, createShortenLink }) => {
       [event.target.name]: event.target.value,
     }));
 
-    const handleSubmit = () => {
-     createShortenLink(form.name, form.longUrl)
-    }
+  const handleSubmit = async () => {
+    const errors = {};
+    const trimName = form.name.trim();
+    const trimLongUrl = form.longUrl.trim();
 
+    const expression =  /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi;
+    const regex = new RegExp(expression);
+
+    if (trimName.length < 3 || trimName > 20) {
+      errors.name = "The name should be min of 3 and max of 20 characters long";
+    }
+    if (!regex.test(trimLongUrl)){
+      errors.longUrl = "URL is invalid";
+    };
+
+    if(!!Object.keys(errors).length) return setErrors(errors)
+
+    setLoading(true);
+    try {
+      setTimeout(() => createShortenLink(trimName, trimLongUrl), 1000)
+    }catch(err){
+      setLoading(false)
+    }
+  };
+
+  console.log(errors)
 
   return (
     <Dialog open={true} onClose={handleClose} fullWidth>
@@ -43,6 +70,8 @@ const ShortenURLModules = ({ handleClose, createShortenLink }) => {
       <DialogContent>
         <Box mb={3}>
           <TextField
+            error={!!errors.name}
+            helperText={errors.name}
             value={form.name}
             fullWidth
             variant="filled"
@@ -52,6 +81,8 @@ const ShortenURLModules = ({ handleClose, createShortenLink }) => {
           />
         </Box>
         <TextField
+          error={!!errors.longUrl}
+          helperText={errors.longUrl}
           value={form.longUrl}
           fullWidth
           variant="filled"
@@ -68,8 +99,9 @@ const ShortenURLModules = ({ handleClose, createShortenLink }) => {
             color="primary"
             variant="contained"
             disableElevation
+            disabled={loading}
           >
-            Shorten URL
+           {loading ? <CircularProgress size={22}/> : "Create Short Url"}
           </Button>
         </Box>
       </DialogActions>

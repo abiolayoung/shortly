@@ -34,7 +34,7 @@ const Home = () => {
         <Grid container alignItems="center">
           <Grid item sm={6}>
             <Box>
-              <Typography variant="h3">Syn, share, and simplify</Typography>
+              <Typography variant="h3">Sync, share, and simplify</Typography>
               <Box my={3}>
                 <Typography>
                   Simplify your online presence with LinkZip. Organize, share,
