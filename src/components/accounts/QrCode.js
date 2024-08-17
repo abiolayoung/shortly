@@ -139,13 +139,13 @@ const QrCode = () => {
                 </Box>
                 
                 <Box mt={{sm: 5, xs: 2}}
-                  onClick={handleSubmit}
                 >
                   <Button
                     disableElevation
                     variant="contained"
                     color="primary"
-                    disabled={loading}
+                    disabled={loading || !inputValue.url}
+                    onClick={handleSubmit}
                   >
                     {loading ? <CircularProgress size={22} /> : "Generate QrCode"}
                   </Button>
@@ -182,6 +182,7 @@ const QrCode = () => {
                   variant="contained"
                   color="primary"
                   onClick={downloadImage}
+                  disabled={!response}
                 >
                   Download QrCode
                 </Button>
