@@ -150,7 +150,7 @@ const QrCode = () => {
                     {loading ? <CircularProgress size={22} /> : "Generate QrCode"}
                   </Button>
                   {error ? (
-                    <Typography>Sorry something went wrong</Typography>
+                    <Typography style={{color: 'red'}}>Sorry something went wrong</Typography>
                   ) : (
                     ""
                   )}
@@ -174,7 +174,7 @@ const QrCode = () => {
                   style={{ width: "150px", height: "150px" }}
                 />
               ) : (
-                <Box>Your QR-code will appear here...</Box>
+                <Box><Typography style={{color: '#4c4e4e'}}>Your QR-code will appear here...</Typography></Box>
               )}
               <Box my={2}>
                 <Button
