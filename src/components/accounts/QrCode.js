@@ -41,11 +41,12 @@ const QrCode = () => {
 
   console.log(inputValue);
 
-  // const apiKey = '068d7e00-58d1-11ef-8d5d-cff9db25dd8a';
+  // const apiKey = 'b169fef0-6062-11ef-9cc1-016f23632378';
+  // 
 
   const config = {
     headers: {
-      Authorization: "Bearer 068d7e00-58d1-11ef-8d5d-cff9db25dd8a",
+      Authorization: "Bearer b169fef0-6062-11ef-9cc1-016f23632378",
     },
   };
 
